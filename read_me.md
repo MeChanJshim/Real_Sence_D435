@@ -454,6 +454,16 @@ rs_robot() {
     rgb_camera.profile:="$profile"
 }
 
+rs_third() {
+  local profile="${1:-$RS_ROBOT_PROFILE_DEFAULT}"
+  ros2 launch realsense2_camera rs_launch.py \
+    camera_namespace:="$RS_NS" \
+    camera_name:=third \
+    serial_no:="'332322072455'" \
+    $(_rs_common_args) \
+    rgb_camera.profile:="$profile"
+}
+
 rs_robot_fallback() {
   rs_robot "424x240x30"
 }
